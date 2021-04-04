@@ -1,0 +1,92 @@
+{
+	"name": "hanreihozon",
+	"displayName": "HanreiHozon",
+	"description": "判例に名前を付けて保存",
+	"version": "0.1.5",
+	"publisher": "miyawaki",
+	"repository": {"url": "https://github.com/m-miyawaki/hanreihozon"},
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.54.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.hanreihozon",
+		"onCommand:extension.citationToClipboard"
+	],
+	"main": "./dist/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.hanreihozon",
+				"title": "hanreihozon",
+				"enablement": "editorLangId == plaintext",
+				"category": "hanreiHozon 判例保存"
+			},
+			{
+				"command": "extension.citationToClipboard",
+				"title": "citationToClipboard 出典情報をコピー",
+				"enablement": "editorLangId == plaintext",
+				"category": "hanreiHozon"
+			}
+		],
+		"menus": {
+			"editor/title": [
+				{
+					"command": "extension.hanreihozon",
+					"when": "editorLangId == plaintext",
+					"group": "6_hanreihozon"
+				}
+			],
+			"editor/context": [
+				{
+					"command": "extension.citationToClipboard",
+					"when": "editorLangId == plaintext",
+					"group": "6_hanreihozon"
+				   
+				  }
+			]
+		},
+
+		"configuration": {
+			"title": "HanreiHozon",
+			"properties": {
+				"hanreihozon.path": {
+					"description": "判例を保存するディレクトリの指定",
+					"type": "string"
+				},
+				"hanreihozon.citationToClipboard": {
+					"description": "年月日の表記の方式を「平成○年○月○日」にする（チェックしない場合の表記は「平○・○・○」）",
+					"type": "boolean"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "webpack --mode production",
+		"webpack": "webpack --mode development",
+		"webpack-dev": "webpack --mode development --watch",
+		"test-compile": "tsc -p ./"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^7.0.1",
+		"@types/node": "^12.11.7",
+		"@types/vscode": "^1.54.0",
+		"@typescript-eslint/eslint-plugin": "^2.18.0",
+		"@typescript-eslint/parser": "^2.18.0",
+		"eslint": "^6.8.0",
+		"glob": "^7.1.6",
+		"mocha": "^7.0.1",
+		"ts-loader": "^8.0.18",
+		"typescript": "^3.7.5",
+		"vscode-test": "^1.3.0",
+		"webpack": "^5.28.0",
+		"webpack-cli": "^4.5.0"
+	},
+	"dependencies": {
+		"util": "^0.12.3"
+	}
+}
