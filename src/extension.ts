@@ -12,7 +12,7 @@ export function activate(context: vscode.ExtensionContext) {
 		if (selection.isEmpty){var jikenname = '';}
 		else {var jikenname = seikei(document.getText(selection));} 
 		let text = document.getText(); 
-		var basename = getNengappi(text, 1) + getSaiban(text,1) + '[' + jikenname + ']' + '.txt';
+		var basename = getNengappi(text, 1) + ' ' + getSaiban(text,1) + '[' + jikenname + ']' + '.txt';
 		let workbenchConfig = vscode.workspace.getConfiguration('hanreihozon');
 		let filepath = workbenchConfig.get('path');
 		if (filepath !== '') {var basename = filepath + '\\' + basename; }
@@ -36,9 +36,11 @@ export function activate(context: vscode.ExtensionContext) {
 				},(error: any) => vscode.window.showErrorMessage(error)
 				);
 			}
-			else{vscode.workspace.fs.copy(uri, finalname).then(
+		else{
+				vscode.workspace.fs.copy(uri, finalname).then(
 			undefined, (error: any) => vscode.window.showErrorMessage(error)
-			);}
+			);
+		}
 		},(error: any) => vscode.window.showErrorMessage(error)
 		);		
 

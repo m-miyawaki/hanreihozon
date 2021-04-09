@@ -2,10 +2,13 @@
 	"name": "hanreihozon",
 	"displayName": "HanreiHozon",
 	"description": "判例に名前を付けて保存",
-	"version": "0.1.5",
+	"version": "0.1.7",
 	"publisher": "miyawaki",
-	"repository": {"url": "https://github.com/m-miyawaki/hanreihozon"},
-	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/m-miyawaki/hanreihozon"
+	},
+	"license": "MIT-0",
 	"engines": {
 		"vscode": "^1.54.0"
 	},
