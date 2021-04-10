@@ -2,7 +2,7 @@
 	"name": "hanreihozon",
 	"displayName": "HanreiHozon",
 	"description": "判例に名前を付けて保存",
-	"version": "0.1.7",
+	"version": "0.2.0",
 	"publisher": "miyawaki",
 	"repository": {
 		"type": "git",

@@ -25,19 +25,21 @@ export function activate(context: vscode.ExtensionContext) {
 				const content = new TextEncoder().encode(text);
 				vscode.workspace.fs.writeFile(finalname, content).then(
 					() =>{
-						vscode.window.showInformationMessage('保存に成功しました。エディタで開きますか？','yes','no').then((value) => {
-							if (value === 'yes'){
+						let firstLine = editor.document.lineAt(0);
+						let lastLine = editor.document.lineAt(editor.document.lineCount - 1);
+						let range = new vscode.Range(firstLine.range.start, lastLine.range.end);
+						editor.edit(editBuilder => {
+						editBuilder.delete(range);
+						});
+						vscode.commands.executeCommand('workbench.action.closeActiveEditor');	
 								vscode.workspace.openTextDocument(finalname).then((doc: vscode.TextDocument) => {
 							vscode.window.showTextDocument(doc, 1, false).then(undefined, (error: any) => vscode.window.showErrorMessage(error)							);},(error: any) => vscode.window.showErrorMessage(error));
-							}
-						
-					},(error: any) => vscode.window.showErrorMessage(error)
-					);
+
 				},(error: any) => vscode.window.showErrorMessage(error)
 				);
 			}
 		else{
-				vscode.workspace.fs.copy(uri, finalname).then(
+				vscode.workspace.fs.rename(uri, finalname).then(
 			undefined, (error: any) => vscode.window.showErrorMessage(error)
 			);
 		}
