@@ -24,9 +24,9 @@
 		"commands": [
 			{
 				"command": "extension.hanreihozon",
-				"title": "hanreihozon",
+				"title": "hanreihozon 判例保存",
 				"enablement": "editorLangId == plaintext",
-				"category": "hanreiHozon 判例保存"
+				"category": "hanreiHozon"
 			},
 			{
 				"command": "extension.citationToClipboard",

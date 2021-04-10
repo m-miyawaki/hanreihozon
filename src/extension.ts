@@ -32,7 +32,7 @@ export function activate(context: vscode.ExtensionContext) {
 						editBuilder.delete(range);
 						});
 						vscode.commands.executeCommand('workbench.action.closeActiveEditor');	
-								vscode.workspace.openTextDocument(finalname).then((doc: vscode.TextDocument) => {
+						vscode.workspace.openTextDocument(finalname).then((doc: vscode.TextDocument) => {
 							vscode.window.showTextDocument(doc, 1, false).then(undefined, (error: any) => vscode.window.showErrorMessage(error)							);},(error: any) => vscode.window.showErrorMessage(error));
 
 				},(error: any) => vscode.window.showErrorMessage(error)
@@ -45,14 +45,6 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 		},(error: any) => vscode.window.showErrorMessage(error)
 		);		
-
-	//			let displayname = gengo + hizuke + ' ' + courtname + '[' + jikenname + ']\n';
-	//			let position = new vscode.Position(0,0);
-	//			editor.edit(edit => {
-	//				edit.insert(position, displayname);
-	//			});
-
-	
 	}));
 	
 	context.subscriptions.push(vscode.commands.registerCommand('extension.citationToClipboard', 
