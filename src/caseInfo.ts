@@ -1,9 +1,10 @@
 export function getSaiban(input: string, option: number){
 	// option 1(filename), 2(東京地+支+判)
-	let bunkenshubetsu = input.match(/【文献種別】[ 　\t]*(?<keishiki>(?:判|決|中間判))[決定]／(?<court>.+[^方等])[方等]?裁判所(?:(?<shibu>.+支)部)?/);
+	let bunkenshubetsu : any = input.match(/【文献種別】[ 　\t]*(?<keishiki>(?:判|決|中間判))[決定]／(?<court>.+[^方等])[方等]?裁判所(?:(?<shibu>.+支)部)?/);
+
 	var shibuname = bunkenshubetsu.groups.shibu;
 	var honbuname = bunkenshubetsu.groups.court;
-	if (honbuname === '知的財産高'){var honbuname = '知財高';}
+	if (honbuname === '知的財産高'){honbuname = '知財高';}
 	let courtname = honbuname + '裁' ;
 	let keishiki = bunkenshubetsu.groups.keishiki;
 	if (option === 1){
@@ -18,7 +19,7 @@ else {
 
 export function getNengappi(input: string, option: number){
 	// option 1(filename), 2(xx・xx・xx), 3(年月日)
-	let nengappi = input.match(/【(裁判|判決|決定)年月日】[ 　\t]*(?<gengo>[^ 　\t]{2})[ 　\t]*(?<year>[0-9０-９元]{1,2})年[ 　\t]*(?<month>[0-9０-９]{1,2})月[ 　\t]*(?<day>[0-9０-９]{1,2})日/);
+	let nengappi :any = input.match(/【(裁判|判決|決定)年月日】[ 　\t]*(?<gengo>[^ 　\t]{2})[ 　\t]*(?<year>[0-9０-９元]{1,2})年[ 　\t]*(?<month>[0-9０-９]{1,2})月[ 　\t]*(?<day>[0-9０-９]{1,2})日/);
 	let kanjiGengo = nengappi.groups.gengo;
 	if (kanjiGengo === '令和'){var gengo = 'R';}
 	else if (kanjiGengo === '平成'){var gengo = 'H';}
@@ -46,7 +47,7 @@ export function getNengappi(input: string, option: number){
 }
 
 export function getCitation(input: string){
-	let caseNum =  input.match(/【事件番号】[ 　\t]*(?<gengo>[^ 　\t]{2})[ 　\t]*(?<year>[0-9０-９元]{1,2})年[ 　\t]*(?<wa>[^第]+)第[ 　\t]*(?<num>[0-9０-９]+)号/);
+	let caseNum : any =  input.match(/【事件番号】[ 　\t]*(?<gengo>[^ 　\t]{2})[ 　\t]*(?<year>[0-9０-９元]{1,2})年[ 　\t]*(?<wa>[^第]+)第[ 　\t]*(?<num>[0-9０-９]+)号/);
 	if (caseNum === null){return['no',''];}
 	let caseNum2 = caseNum.groups.gengo + caseNum.groups.year + '年' + caseNum.groups.wa + caseNum.groups.num;
 	let jikenBango = toHankaku(caseNum2);
@@ -54,15 +55,15 @@ export function getCitation(input: string){
 	if (keisai === null){return['',jikenBango];}
 	else {
 		if (keisai[1].includes('最高裁判所民事判例集')){
-			var kangou = keisai[1].match(/最高裁判所民事判例集([0-9０-９]+巻[0-9０-９]+号[0-9０-９]+頁)/);
+			var kangou : any = keisai[1].match(/最高裁判所民事判例集([0-9０-９]+巻[0-9０-９]+号[0-9０-９]+頁)/);
 			return ['民集'+ toHankaku(kangou[1]), jikenBango];
 		}
 		else if (keisai[1].includes('判例時報')){
-			var kangou = keisai[1].match(/判例時報([0-9０-９]+号[0-9０-９]+頁)/);
+			kangou = keisai[1].match(/判例時報([0-9０-９]+号[0-9０-９]+頁)/);
 			return ['判時'+ toHankaku(kangou[1]), jikenBango];
 		}
 		else if (keisai[1].includes('判例タイムズ')){
-			var kangou = keisai[1].match(/判例タイムズ([0-9０-９]+号[0-9０-９]+頁)/);
+			kangou = keisai[1].match(/判例タイムズ([0-9０-９]+号[0-9０-９]+頁)/);
 			return ['判タ'+ toHankaku(kangou[1]), jikenBango];
 		}
 		else {return ['',jikenBango];}
