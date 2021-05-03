@@ -17,7 +17,8 @@
 	],
 	"keywords": [
         "法律",
-        "判例"
+        "判例",
+		"LEX/DB"
     ],
 	"activationEvents": [
 		"onCommand:extension.hanreihozon",
