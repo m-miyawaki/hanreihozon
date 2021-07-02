@@ -1,16 +1,19 @@
 {
 	"name": "hanreihozon",
 	"displayName": "HanreiHozon",
-	"description": "判例に名前を付けて保存",
+	"description": "判例（LEX／DBから取得したものに限る）のテキストデータを「名前を付けて保存」する際の名前を生成します。判例の出典情報をクリップボードに格納することもできます。",
 	"version": "1.0.0",
 	"publisher": "miyawaki",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/m-miyawaki/hanreihozon"
+		"url": "https://github.com/m-miyawaki/hanreihozon.git"
 	},
 	"license": "MIT-0",
 	"engines": {
 		"vscode": "^1.54.0"
+	},
+	"bugs": {
+		"url": "https://github.com/m-miyawaki/hanreihozon/issues"
 	},
 	"categories": [
 		"Other"
