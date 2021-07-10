@@ -25,7 +25,7 @@ LEX／DBの判例情報（書誌情報も含む）から作成したテキスト
 ## Extension Settings
 ### Path
 判例データを保存するフォルダを指定したい場合には、"Hanrei Hozon"設定の"Path"のところに、そのフォルダのパスを記述します。
-例：	`C:\Users\xxxx\Documents\Hanrei`
+例：	`C:\Users\xxxx\Documents\Hanrei\`
 
 ### <a name="jump"></a>CitationToClipboard
 「年月日の表記の方式を『平成○年○月○日』にする」にチェックを入れると、クリップボードに格納される出典情報の日付の表記の方式が「平成○年○月○日」のようになります（チェックしない場合の表記は「平○・○・○」）」。

@@ -16,7 +16,7 @@ export function activate(context: vscode.ExtensionContext) {
 		var basename = getNengappi(text, 1) + ' ' + getSaiban(text,1) + '[' + jikenname + ']' + '.txt';
 		let workbenchConfig = vscode.workspace.getConfiguration('hanreihozon');
 		let filepath = workbenchConfig.get('path');
-		if (filepath !== '') {var basename = filepath + '\\' + basename; }
+		if (filepath !== '') {var basename = filepath +  basename; }
 				
 		vscode.window.showSaveDialog({
 			defaultUri: vscode.Uri.file(basename)

@@ -2,7 +2,7 @@
 	"name": "hanreihozon",
 	"displayName": "HanreiHozon",
 	"description": "判例（LEX／DBから取得したものに限る）のテキストデータを「名前を付けて保存」する際の名前を生成します。判例の出典情報をクリップボードに格納することもできます。",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"publisher": "miyawaki",
 	"repository": {
 		"type": "git",
@@ -65,7 +65,7 @@
 			"title": "HanreiHozon",
 			"properties": {
 				"hanreihozon.path": {
-					"description": "判例を保存するディレクトリの指定",
+					"description": "判例を保存するディレクトリの指定（例：C:\\Users\\xxxx\\Documents\\Hanrei\\）",
 					"type": "string"
 				},
 				"hanreihozon.citationToClipboard": {
