@@ -42,8 +42,16 @@ export function activate(context: vscode.ExtensionContext) {
 				},(error: any) => vscode.window.showErrorMessage(error)
 				);
 			}
+		else if (document.isDirty === true ){
+				document.save().then(() => {
+					vscode.workspace.fs.rename(uri, finalname).then(
+					undefined, (error: any) => vscode.window.showErrorMessage(error));
+				}
+
+				);
+			}
 		else{
-				vscode.workspace.fs.rename(uri, finalname).then(
+			vscode.workspace.fs.rename(uri, finalname).then(
 			undefined, (error: any) => vscode.window.showErrorMessage(error)
 			);
 		}
@@ -81,4 +89,3 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 export function deactivate() {}
-
